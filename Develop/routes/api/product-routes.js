@@ -78,7 +78,7 @@ router.put('/:id', (req, res) => {
   // update product data
   Product.update(req.body, {
     where: {
-      id: req.params.id,
+      product_id: req.params.id,
     },
   })
     .then((product) => {
@@ -94,7 +94,7 @@ router.put('/:id', (req, res) => {
         .map((tag_id) => {
           return {
             product_id: req.params.id,
-            tag_id,
+            tag_id: 5,
           };
         });
       // figure out which ones to remove
@@ -115,13 +115,13 @@ router.put('/:id', (req, res) => {
     });
 });
 
-// need to fix this
+// works! 
 router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
   try {
     const productData = await Product.destroy({
       where: {
-        id: req.params.id,
+        product_id: req.params.id,
       },
     });
 
